@@ -1,0 +1,64 @@
+<LoginScreen>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 15
+
+    Label:
+        text: "Organization Login"
+        font_size: '24sp'
+        size_hint_y: None
+        height: self.texture_size[1]
+
+    TextInput:
+        id: email
+        hint_text: "Email"
+        multiline: False
+        size_hint_y: None
+        height: 40
+        on_text: root.email.text = self.text
+
+    TextInput:
+        id: password
+        hint_text: "Password"
+        password: True
+        multiline: False
+        size_hint_y: None
+        height: 40
+        on_text: root.password.text = self.text
+
+    Button:
+        text: "Login"
+        size_hint_y: None
+        height: 50
+        on_press: root.login(self)
+
+    Label:
+        id: status_label
+        text: root.status_label.text
+        color: 1, 0, 0, 1
+        size_hint_y: None
+        height: 40
+
+<FaceScanner>:
+    orientation: 'vertical'
+    padding: 10
+    spacing: 10
+
+    Image:
+        id: camera_feed
+        size_hint: (1, 0.7)
+        allow_stretch: True
+        keep_ratio: True
+        source: ''
+
+    Label:
+        id: status_label
+        text: root.status_label.text
+        size_hint_y: None
+        height: 30
+
+    Button:
+        text: "SCAN"
+        size_hint_y: None
+        height: 60
+        on_press: root.capture_and_send(self)
